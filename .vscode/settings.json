@@ -15,12 +15,13 @@
     "titleBar.inactiveBackground": "#dd053199",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
+  "angular.enable-strict-mode-prompt": false,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
-  "prettier.configPath": ".prettierrc",
+  "prettier.configPath": ".prettierrc.json",
   "prettier.documentSelectors": [
-    "{**/*,*}.{js,ts,jsx,tsx}"
+    "{**/*,*}.{css,json,scss,ts}"
   ],
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
