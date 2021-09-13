@@ -42,6 +42,13 @@
           </div>
         </ng-container>
 
+        <div *ngIf="isLoadingFlight$ | async">
+          ... loading flights ...
+        </div>
+
+        <div *ngIf="loadingFlightsError$ | async as loadingFlightsError" class="text-danger">
+          {{ loadingFlightsError }}
+        </div>
       </div>
     </form>
 
