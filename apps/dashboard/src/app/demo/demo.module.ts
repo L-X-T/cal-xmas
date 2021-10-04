@@ -4,10 +4,9 @@ import { Injector, NgModule } from '@angular/core';
 import { createCustomElement } from '@angular/elements';
 
 @NgModule({
-  imports: [CommonModule],
-  exports: [DemoComponent],
-  declarations: [DemoComponent],
-  entryComponents: [DemoComponent]
+    imports: [CommonModule],
+    exports: [DemoComponent],
+    declarations: [DemoComponent]
 })
 export class DemoModule {
   constructor(injector: Injector) {
