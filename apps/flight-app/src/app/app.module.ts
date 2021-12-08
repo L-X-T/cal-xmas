@@ -18,7 +18,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlightLookaheadComponent } from './flight-lookahead/flight-lookahead.component';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './+state';
+import { metaReducers, reducers } from './+state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
