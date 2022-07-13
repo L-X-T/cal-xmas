@@ -579,7 +579,7 @@
           }
         }
       },
-      "tags": ["domain:shared"]
+      "tags": ["domain:shared", "type:util"]
     },
     "luggage": {
       "projectType": "application",
