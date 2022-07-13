@@ -766,6 +766,29 @@
       },
       "tags": ["domain:luggage", "type:feature"]
     },
+    "luggage-ui-card": {
+      "projectType": "library",
+      "root": "libs/luggage/ui-card",
+      "sourceRoot": "libs/luggage/ui-card/src",
+      "prefix": "card",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/luggage/ui-card"],
+          "options": {
+            "jestConfig": "libs/luggage/ui-card/jest.config.ts",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/luggage/ui-card/**/*.ts", "libs/luggage/ui-card/**/*.html"]
+          }
+        }
+      },
+      "tags": ["domain:luggage", "type:ui"]
+    },
     "passenger": {
       "$schema": "../../node_modules/nx/schemas/project-schema.json",
       "projectType": "application",
