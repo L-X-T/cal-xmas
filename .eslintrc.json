@@ -22,10 +22,7 @@
               },
               {
                 "sourceTag": "domain:dashboard",
-                "onlyDependOnLibsWithTags": [
-                  "domain:dashboard",
-                  "domain:shared"
-                ]
+                "onlyDependOnLibsWithTags": ["domain:dashboard", "domain:shared"]
               },
               {
                 "sourceTag": "domain:external",
@@ -33,10 +30,11 @@
               },
               {
                 "sourceTag": "domain:passenger",
-                "onlyDependOnLibsWithTags": [
-                  "domain:passenger",
-                  "domain:shared"
-                ]
+                "onlyDependOnLibsWithTags": ["domain:passenger", "domain:shared"]
+              },
+              {
+                "sourceTag": "domain:luggage",
+                "onlyDependOnLibsWithTags": ["domain:luggage", "domain:shared"]
               }
             ]
           }
