@@ -11,8 +11,8 @@ import { catchError, debounceTime, distinctUntilChanged, filter, map, pairwise, 
   styleUrls: ['./flight-lookahead.component.css']
 })
 export class FlightLookaheadComponent implements OnInit {
-  fromControl: FormControl;
-  toControl: FormControl;
+  fromControl: FormControl<string>;
+  toControl: FormControl<string>;
 
   flights$: Observable<Flight[]>;
   diff$: Observable<number>;
@@ -30,7 +30,7 @@ export class FlightLookaheadComponent implements OnInit {
     /*this.control = new FormControl();
     const input$ = this.control.valueChanges.pipe(debounceTime(300));*/
 
-    this.fromControl = new FormControl();
+    this.fromControl = new FormControl<string>('');
     const fromInput$ = this.fromControl.valueChanges.pipe(
       startWith(''),
       debounceTime(300),
@@ -38,7 +38,7 @@ export class FlightLookaheadComponent implements OnInit {
       distinctUntilChanged()
     );
 
-    this.toControl = new FormControl();
+    this.toControl = new FormControl<string>('');
     const toInput$ = this.toControl.valueChanges.pipe(
       startWith(''),
       debounceTime(300),
@@ -71,7 +71,7 @@ export class FlightLookaheadComponent implements OnInit {
     const refresh$ = this.refreshClick$.pipe(map((_) => [this.fromControl.value, this.toControl.value, this.online]));
 
     this.flights$ = merge(combined$, refresh$).pipe(
-      filter(([f, t, online]) => (f || t) && online),
+      filter(([f, t, online]: [string, string, boolean]) => (f || t) && online),
       map(([from, to, _]) => [from, to]),
       tap(([from, to]) => (this.loading = true)),
       switchMap(([from, to]) =>
