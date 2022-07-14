@@ -13,7 +13,14 @@ import { AirportComponent } from './airport/airport.component';
 
 @NgModule({
   imports: [CommonModule, FormsModule, SharedModule.forChild(), RouterModule.forChild(FLIGHT_BOOKING_ROUTES)],
-  declarations: [FlightSearchComponent, FlightCardComponent, PassengerSearchComponent, FlightEditComponent, FlightBookingComponent, AirportComponent],
+  declarations: [
+    FlightSearchComponent,
+    FlightCardComponent,
+    PassengerSearchComponent,
+    FlightEditComponent,
+    FlightBookingComponent,
+    AirportComponent
+  ],
   providers: [],
   exports: [FlightSearchComponent]
 })

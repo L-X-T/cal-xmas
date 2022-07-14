@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AirportService } from '@flight-workspace/flight-lib';
-import { Observable, Observer } from 'rxjs';
+import { Observable, Observer, Subscription } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'airport',
   templateUrl: './airport.component.html'
 })
-export class AirportComponent implements OnInit {
-  airports: string[] = [];
+export class AirportComponent implements OnInit, OnDestroy {
   airports$: Observable<string[]>;
-  airportsObserver: Observer<string[]>;
+
+  // 1 using subscription & unsubscribe
+  airports: string[] = [];
+  private airportsObserver: Observer<string[]>;
+  private airportsSubscription: Subscription;
 
   constructor(private airportService: AirportService) {}
 
@@ -17,11 +21,28 @@ export class AirportComponent implements OnInit {
     this.airports$ = this.airportService.findAll();
 
     this.airportsObserver = {
-      next: (airports) => (this.airports = airports),
-      error: (err) => console.error(err),
-      complete: () => console.log('Observable completed!')
+      next: (airports) => this.onLoadAirportsSuccessfully(airports),
+      error: (err) => this.onLoadAirportsFail(err),
+      complete: () => {
+        console.warn('airports$ completed');
+      }
     };
 
-    this.airports$.subscribe(this.airportsObserver);
+    // 1 using subscription & unsubscribe
+    this.airportsSubscription = this.airports$.subscribe(this.airportsObserver);
+  }
+
+  ngOnDestroy(): void {
+    // 1 using subscription & unsubscribe
+    this.airportsSubscription?.unsubscribe();
+  }
+
+  private onLoadAirportsSuccessfully(airports: string[]): void {
+    console.log('airports$ next: ' + airports);
+    this.airports = airports;
+  }
+
+  private onLoadAirportsFail(err: HttpErrorResponse): void {
+    console.error('airports$ error: ' + err);
   }
 }
