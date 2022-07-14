@@ -24,3 +24,17 @@
   </div>
 </div>
 
+<div class="card">
+  <div class="header">
+    <h1 class="title">Airports Async Pipe</h1>
+  </div>
+  <div class="content">
+    <div class="row">
+      <!-- 3. Using the async pipe -->
+      <div class="col-lg-3" *ngFor="let airport of airports$ | async">
+        {{ airport }}
+      </div>
+    </div>
+  </div>
+</div>
+
