@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AirportService } from '@flight-workspace/flight-lib';
 import { Observable, Observer, Subject, Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-import { takeUntil } from 'rxjs/operators';
+import { share, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'airport',
@@ -24,7 +24,7 @@ export class AirportComponent implements OnInit, OnDestroy {
   constructor(private airportService: AirportService) {}
 
   ngOnInit(): void {
-    this.airports$ = this.airportService.findAll();
+    this.airports$ = this.airportService.findAll().pipe(share());
 
     this.airportsObserver = {
       next: (airports) => this.onLoadAirportsSuccessfully(airports),
