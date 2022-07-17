@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 
 import { FlightSearchComponent } from './flight-search.component';
 
@@ -6,6 +6,7 @@ import { Flight, FlightService } from '@flight-workspace/flight-lib';
 import { Observable, of } from 'rxjs';
 import { Component, Directive, EventEmitter, Input, Output, Pipe, PipeTransform } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 describe('Unit test: flight-search.component', () => {
   let component: FlightSearchComponent;
@@ -110,4 +111,28 @@ describe('Unit test: flight-search.component', () => {
 
     expect(component.flights.length).toBeGreaterThan(0);
   });
+
+  it('should have a disabled search button w/o params', fakeAsync(() => {
+    tick();
+
+    // Get input field for from
+    const from = fixture.debugElement.query(By.css('input[name=from]')).nativeElement;
+
+    from.value = '';
+    from.dispatchEvent(new Event('input'));
+
+    // Get input field for to
+    const to = fixture.debugElement.query(By.css('input[name=to]')).nativeElement;
+
+    to.value = '';
+    to.dispatchEvent(new Event('input'));
+
+    fixture.detectChanges();
+    tick();
+
+    // Get disabled
+    const disabled = fixture.debugElement.query(By.css('button')).properties['disabled'];
+
+    expect(disabled).toBeTruthy();
+  }));
 });
