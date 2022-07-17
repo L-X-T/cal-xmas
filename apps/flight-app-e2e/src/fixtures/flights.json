@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "from": "Wien",
+    "to": "Eisenstadt",
+    "date": "2022-03-01",
+    "delayed": false
+  },
+  {
+    "id": 2,
+    "from": "Wien",
+    "to": "Eisenstadt",
+    "date": "2022-03-02",
+    "delayed": true
+  },
+  {
+    "id": 3,
+    "from": "Wien",
+    "to": "Eisenstadt",
+    "date": "2022-03-03",
+    "delayed": false
+  }
+]

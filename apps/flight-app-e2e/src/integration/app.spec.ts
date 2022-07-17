@@ -1,4 +1,4 @@
-describe('flight-app', () => {
+describe('Flight App', () => {
   beforeEach(() => cy.visit('/'));
 
   it('should do a sanity check', () => {
