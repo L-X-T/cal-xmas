@@ -1051,6 +1051,29 @@
         }
       },
       "tags": ["domain:passenger", "type:feature"]
+    },
+    "shared-auth-lib": {
+      "projectType": "library",
+      "root": "libs/shared/auth-lib",
+      "sourceRoot": "libs/shared/auth-lib/src",
+      "prefix": "flight-workspace",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/shared/auth-lib"],
+          "options": {
+            "jestConfig": "libs/shared/auth-lib/jest.config.ts",
+            "passWithNoTests": true
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/shared/auth-lib/**/*.ts", "libs/shared/auth-lib/**/*.html"]
+          }
+        }
+      },
+      "tags": ["domain:shared", "type:util"]
     }
   }
 }
