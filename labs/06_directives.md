@@ -71,16 +71,16 @@
     })
     export class ClickWithWarningDirective implements OnInit {
 
-      // Add Input and Output:
+      // Add Input and Output
       @Input() warning = 'Are you sure?';
       @Output() appClickWithWarning = new EventEmitter();
 
-      // HostBinding ergänzen
+      // Add HostBinding
       @HostBinding('class') classBinding: string | undefined;
 
       constructor(private elementRef: ElementRef) {}
 
-      // HostListener ergänzen:
+      // Add HostListener
       @HostListener('click', ['$event.shiftKey'])
       handleClick(shiftKey: boolean): void {
         if (shiftKey || confirm(this.warning)) {
@@ -89,7 +89,7 @@
       }
 
       ngOnInit(): void {
-        // Klassen über HostBinding zuweisen:
+        // Assign class binding
         this.classBinding = 'btn btn-danger';
       }
     }
@@ -189,12 +189,17 @@ In this bonus lab, you write a ``Tooltip`` directive that adds a template next t
 
       constructor(private host: ElementRef, private viewContainer: ViewContainerRef) {}
 
-      setHidden(hidden: boolean): void {
-        this.viewRef?.rootNodes.forEach(nativeElement => {
-          nativeElement.hidden = hidden;
-        });
+      // Add HostListeners
+      @HostListener('mouseover')
+      show(): void {
+        this.setHidden(false);
       }
-
+    
+      @HostListener('mouseout')
+      hide(): void {
+        this.setHidden(true);
+      }
+      
       ngOnInit(): void {
         if (!this.template) {
           return;
@@ -202,14 +207,11 @@ In this bonus lab, you write a ``Tooltip`` directive that adds a template next t
         this.viewRef = this.viewContainer.createEmbeddedView(this.template);
 
         this.setHidden(true);
-
-        const elm = this.host.nativeElement as HTMLElement;
-        elm.addEventListener('mouseover', () => {
-          this.setHidden(false);
-        });
-
-        elm.addEventListener('mouseout', () => {
-          this.setHidden(true);
+      }
+   
+      private setHidden(isHidden: boolean): void {
+        this.viewRef?.rootNodes.forEach((nativeElement) => {
+          nativeElement.hidden = isHidden;
         });
       }
     }
@@ -294,7 +296,6 @@ In this lab, you will implement a simple DataTable with configurable fields:
       styleUrls: ['./data-table.component.scss']
     })
     export class DataTableComponent {
-
       @ContentChildren(TableFieldDirective)
       fields: QueryList<TableFieldDirective> | undefined;
 
@@ -327,7 +328,7 @@ In this lab, you will implement a simple DataTable with configurable fields:
 
     import { Component } from '@angular/core';
 
-    // Import hinzufügen:
+    // Add import
     import { Flight } from 'src/app/flight-booking/flight';
 
     @Component({
@@ -336,12 +337,11 @@ In this lab, you will implement a simple DataTable with configurable fields:
       styleUrls: ['./booking-history.component.scss']
     })
     export class BookingHistoryComponent {
-
-      // Eigenschaft hinzufügen
+      // Add member
       flights: Flight[] = [
-        { id: 1, from: 'Hamburg', to: 'Berlin', date: '2025-02-01T17:00+01:00' },
-        { id: 2, from: 'Hamburg', to: 'Frankfurt', date: '2025-02-01T17:30+01:00' },
-        { id: 3, from: 'Hamburg', to: 'Mallorca', date: '2025-02-01T17:45+01:00' }
+        { id: 1, from: 'Hamburg', to: 'Berlin', date: '2025-02-01T17:00+01:00', delayed: false },
+        { id: 2, from: 'Hamburg', to: 'Frankfurt', date: '2025-02-01T17:30+01:00', delayed: false },
+        { id: 3, from: 'Hamburg', to: 'Mallorca', date: '2025-02-01T17:45+01:00', delayed: false }
       ];
     }
     ```
