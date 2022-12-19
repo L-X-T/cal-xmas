@@ -4244,10 +4244,10 @@
   "resolved" "https://registry.npmjs.org/cuint/-/cuint-0.2.2.tgz"
   "version" "0.2.2"
 
-"cypress@^10.11.0", "cypress@>= 3 < 11":
-  "integrity" "sha512-lsaE7dprw5DoXM00skni6W5ElVVLGAdRUUdZjX2dYsGjbY/QnpzWZ95Zom1mkGg0hAaO/QVTZoFVS7Jgr/GUPA=="
-  "resolved" "https://registry.npmjs.org/cypress/-/cypress-10.11.0.tgz"
-  "version" "10.11.0"
+"cypress@^9.7.0", "cypress@>= 3 < 11":
+  "integrity" "sha512-+1EE1nuuuwIt/N1KXRR2iWHU+OiIt7H28jJDyyI4tiUftId/DrXYEwoDa5+kH2pki1zxnA0r6HrUGHV5eLbF5Q=="
+  "resolved" "https://registry.npmjs.org/cypress/-/cypress-9.7.0.tgz"
+  "version" "9.7.0"
   dependencies:
     "@cypress/request" "^2.88.10"
     "@cypress/xvfb" "^1.2.4"
@@ -4268,7 +4268,7 @@
     "dayjs" "^1.10.4"
     "debug" "^4.3.2"
     "enquirer" "^2.3.6"
-    "eventemitter2" "6.4.7"
+    "eventemitter2" "^6.4.3"
     "execa" "4.1.0"
     "executable" "^4.1.1"
     "extract-zip" "2.0.1"
@@ -5063,7 +5063,7 @@
   "resolved" "https://registry.npmjs.org/eventemitter-asyncresource/-/eventemitter-asyncresource-1.0.0.tgz"
   "version" "1.0.0"
 
-"eventemitter2@6.4.7":
+"eventemitter2@^6.4.3":
   "integrity" "sha512-tYUSVOGeQPKt/eC1ABfhHy5Xd96N3oIijJvN3O9+TsC28T5V9yX9oEfEK5faP0EFSNVOG97qtAS68GBrQB2hDg=="
   "resolved" "https://registry.npmjs.org/eventemitter2/-/eventemitter2-6.4.7.tgz"
   "version" "6.4.7"
