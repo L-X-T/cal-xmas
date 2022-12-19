@@ -1,4 +1,5 @@
-import { AfterContentInit, Component, ContentChildren, QueryList } from '@angular/core';
+import { AfterContentInit, AfterViewInit, Component, ContentChildren, QueryList, ViewChild } from '@angular/core';
+import { TabNavigatorComponent } from '../tab-navigator/tab-navigator.component';
 import { TabComponent } from '../tab/tab.component';
 
 @Component({
@@ -6,9 +7,12 @@ import { TabComponent } from '../tab/tab.component';
   templateUrl: './tabbed-pane.component.html',
   styleUrls: ['./tabbed-pane.component.css']
 })
-export class TabbedPaneComponent implements AfterContentInit {
+export class TabbedPaneComponent implements AfterContentInit, AfterViewInit {
   @ContentChildren(TabComponent)
   tabQueryList: QueryList<TabComponent> | undefined;
+
+  @ViewChild('navigator')
+  navigator: TabNavigatorComponent | undefined;
 
   activeTab: TabComponent | undefined;
   currentPage = 1;
@@ -20,6 +24,18 @@ export class TabbedPaneComponent implements AfterContentInit {
   ngAfterContentInit(): void {
     if (this.tabs.length > 0) {
       this.activate(this.tabs[0]);
+    }
+  }
+
+  // Directly interact with the navigator
+  ngAfterViewInit(): void {
+    if (this.navigator) {
+      this.navigator.pageCount = this.tabs.length;
+      // This line would cause a cycle:
+      // this.navigator.page = 1;
+      this.navigator.pageChange.subscribe((page: number) => {
+        this.pageChange(page);
+      });
     }
   }
 
