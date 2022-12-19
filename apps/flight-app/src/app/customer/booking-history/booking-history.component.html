@@ -18,3 +18,12 @@
 
 <button class="btn btn-danger" (click)="cww.handleClick(true)">Delete without asking questions!</button>
 
+<input placeholder="Hover me!" [appTooltip]="tmpl">
+
+<ng-template #tmpl>
+  <h3>2 Tips for Success</h3>
+  <ol>
+    <li>Don't tell everything!</li>
+  </ol>
+</ng-template>
+
