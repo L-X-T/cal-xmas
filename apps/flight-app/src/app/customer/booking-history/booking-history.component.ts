@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./booking-history.component.css']
 })
 export class BookingHistoryComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  delete(): void {
+    console.log('delete ...');
   }
-
 }
