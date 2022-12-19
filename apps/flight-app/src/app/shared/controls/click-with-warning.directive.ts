@@ -1,7 +1,8 @@
 import { Directive, ElementRef, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
 
 @Directive({
-  selector: '[appClickWithWarning]'
+  selector: '[appClickWithWarning]',
+  exportAs: 'clickWithWarning'
 })
 export class ClickWithWarningDirective implements OnInit {
   // Add Input and Output

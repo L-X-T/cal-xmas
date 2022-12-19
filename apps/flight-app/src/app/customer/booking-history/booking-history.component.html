@@ -14,4 +14,7 @@
   </app-tab>
 </app-tabbed-pane>
 
-<button (appClickWithWarning)="delete()">Delete</button>
+<button (appClickWithWarning)="delete()" #cww="clickWithWarning">Delete</button>
+
+<button class="btn btn-danger" (click)="cww.handleClick(true)">Delete without asking questions!</button>
+
